@@ -1,2 +1,53 @@
-<h1>Dashboard#index</h1>
-<p>Find me in app/views/dashboard/index.html.erb</p>
+<div class="row">
+  <div class="col-lg-6">
+    <div class="card" style="padding: 20px">
+      <h1>Last 10 logs</h1>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Product</th>
+            <th>Type</th>
+            <th>Quantity</th>
+            <th>Date</th>
+          </tr>
+        </thead>
+        <tbody>
+          <%  @latest_logs.each do |log| %>
+          <tr>
+            <td><%= log.product.name %></td>
+            <td><%= log.log_type_name %></td>
+            <td><%= log.quantity %></td>
+            <td><%= log.created_at %></td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="col-lg-6">
+    <div class="card" style="padding: 20px">
+      <h1>Top 5 productos</h1>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Producto</th>
+            <th>Referencia</th>
+            <th>Cantidad</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @top_products.each do |product| %>
+          <tr>
+            <td><%= product.id %></td>
+            <td><%= product.name %></td>
+            <td><%= product.reference %></td>
+            <td><%= product.quantity %></td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
