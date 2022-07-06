@@ -1,0 +1,15 @@
+wb = xlsx_package.workbook
+
+wb.add_worksheet(name: "Logs") do |sheet|
+  sheet.add_row(["ID", @product.id])
+  sheet.add_row(["Reference", @product.reference])
+  sheet.add_row(["Name", @product.name])
+  sheet.add_row(["Quantity", @product.quantity])
+  sheet.add_row(["Description", @product.description])
+  sheet.add_row(["Created at", @product.created_at])
+  sheet.add_row([])
+  sheet.add_row ["Type", "Quantity", "Comment", "Date"]
+  @product.logs.each do |log|
+    sheet.add_row [log.log_type_name, log.quantity, log.comment, log.created_at]
+  end
+end
